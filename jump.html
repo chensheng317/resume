@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>跳转到外部浏览器</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <script>
+        function isWeixin() {
+            return /MicroMessenger/i.test(navigator.userAgent);
+        }
+        window.onload = function () {
+            if (isWeixin()) {
+                document.getElementById("weixin-tip").style.display = "block";
+            }
+        }
+        function copyLink() {
+            const link = "https://chen-sheng-resume-1106.netlify.app/";
+            const input = document.createElement("input");
+            input.value = link;
+            document.body.appendChild(input);
+            input.select();
+            document.execCommand("copy");
+            document.body.removeChild(input);
+            alert("链接已复制，请粘贴到浏览器中打开！");
+        }
+    </script>
+    <style>
+        #weixin-tip {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            text-align: center;
+            padding-top: 20%;
+            z-index: 100;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>欢迎访问目标网站</h1>
+    <p>正在跳转...</p>
+    <div id="weixin-tip">
+        <h2>请点击右上角菜单</h2>
+        <p>选择“在浏览器中打开”以继续访问</p>
+        <button onclick="copyLink()">复制链接</button>
+    </div>
+</body>
+
+</html>

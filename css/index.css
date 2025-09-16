@@ -1,0 +1,273 @@
+/* CSS变量定义 */
+:root {
+    --primary-color: #00f0ff;
+    --secondary-color: #0072ff;
+    --accent-color: #ff00ff;
+    --dark-bg: #0a0a1f;
+    --light-bg: #0e0e2c;
+    --text-color: #ffffff;
+    --glow-effect: 0 0 15px rgba(0, 240, 255, 0.5);
+    --brand-glow: 0 0 10px var(--primary-color), 0 0 20px var(--primary-color);
+}
+
+/* 基础样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+}
+
+body {
+    background: var(--dark-bg);
+    color: var(--text-color);
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* 音频播放器样式 */
+/* .audio-player {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: rgba(18, 18, 48, 0.8);
+    border: 1px solid var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 1000;
+    transition: all 0.3s ease;
+    box-shadow: var(--glow-effect);
+}
+
+.audio-player:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(0, 240, 255, 0.7);
+}
+
+.audio-player i {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+} */
+
+/* 通用区域样式 */
+section {
+    padding: 120px 0;
+    position: relative;
+}
+
+.container {
+    position: relative;
+    z-index: 2;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 60px;
+    position: relative;
+    color: var(--primary-color);
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+}
+
+/* 动画效果 */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate {
+    opacity: 0;
+    animation: fadeInUp 1s ease forwards;
+}
+
+.delay-1 {
+    animation-delay: 0.2s;
+}
+
+.delay-2 {
+    animation-delay: 0.4s;
+}
+
+.delay-3 {
+    animation-delay: 0.6s;
+}
+
+.delay-4 {
+    animation-delay: 0.8s;
+}
+
+.delay-5 {
+    animation-delay: 1s;
+}
+
+/* 响应式设计 */
+@media (max-width: 992px) {
+    .hero-title {
+        font-size: 3rem;
+    }
+
+    .about-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .timeline::after {
+        left: 31px;
+    }
+
+    .timeline-item {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 25px;
+    }
+
+    .timeline-item::after {
+        left: 18px;
+    }
+
+    .left::after,
+    .right::after {
+        left: 18px;
+    }
+
+    .left::before,
+    .right::before {
+        left: 60px;
+        border: medium solid rgba(18, 18, 48, 0.8);
+        border-width: 10px 10px 10px 0;
+        border-color: transparent rgba(18, 18, 48, 0.8) transparent transparent;
+    }
+
+    .left,
+    .right {
+        left: 0%;
+    }
+
+    .zigzag-path::before {
+        left: 40px;
+    }
+
+    .path-item:nth-child(odd),
+    .path-item:nth-child(even) {
+        padding-left: 20px;
+        padding-right: 20px;
+        text-align: left;
+    }
+
+    .path-item::before {
+        left: 32px;
+        right: auto;
+    }
+
+    .book-cover h3 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.2rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .contact-form {
+        padding: 20px;
+    }
+
+    .info-item {
+        flex-direction: column;
+    }
+
+    .info-label {
+        margin-right: 0;
+        margin-bottom: 5px;
+    }
+
+    .page {
+        padding: 20px;
+    }
+
+    .page-nav {
+        width: calc(100% - 40px);
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .navbar-brand {
+        font-size: 1.2rem;
+    }
+
+    .btn-futuristic {
+        padding: 10px 20px;
+        font-size: 1rem;
+    }
+
+    .about-image img {
+        width: 200px;
+        height: 200px;
+    }
+
+    .book-cover h3 {
+        font-size: 1.2rem;
+    }
+
+    .page-title {
+        font-size: 1.4rem;
+    }
+
+    .page-image {
+        height: 150px;
+    }
+}
+
+/* 滚动条样式 */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--dark-bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary-color);
+}

@@ -1,0 +1,88 @@
+/* 英雄区域样式 */
+#hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+#hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(0, 240, 255, 0.1) 0%, rgba(10, 10, 31, 0) 70%);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-title {
+    font-size: 4rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+    text-shadow: 0 0 15px rgba(0, 240, 255, 0.5);
+    background-image: linear-gradient(90deg, 
+    var(--primary-color), 
+    var(--accent-color), 
+    var(--secondary-color), 
+    var(--accent-color), 
+    var(--primary-color));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200%;
+    animation: streamer 5s linear infinite;
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.btn-futuristic {
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    background: rgba(0, 240, 255, 0.1);
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    border-radius: 30px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.btn-futuristic::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 240, 255, 0.2), transparent);
+    transition: all 0.6s ease;
+    z-index: -1;
+}
+
+.btn-futuristic:hover {
+    box-shadow: var(--glow-effect);
+    transform: translateY(-3px);
+    color: var(--dark-bg);
+    background: var(--primary-color);
+}
+
+.btn-futuristic:hover::before {
+    left: 100%;
+}

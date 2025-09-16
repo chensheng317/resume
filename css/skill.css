@@ -1,0 +1,366 @@
+/* 证书与技能样式 */
+#certificates-skills {
+    background: var(--dark-bg);
+    position: relative;
+}
+
+.certificate-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+    margin-bottom: 60px;
+}
+
+/* 证书样式 */
+.certificate-card {
+    position: relative;
+    background: rgba(18, 18, 48, 0.9);
+    border: 2px solid rgba(0, 240, 255, 0.3);
+    border-radius: 2px;
+    padding: 30px 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+
+/* 证书边框装饰 */
+.certificate-card::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    border: 1px dashed rgba(0, 240, 255, 0.3);
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* 证书角落装饰 */
+.certificate-card::after,
+.certificate-card .corner {
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.certificate-card::after {
+    top: 5px;
+    left: 5px;
+    border-top: 2px solid var(--primary-color);
+    border-left: 2px solid var(--primary-color);
+}
+
+.certificate-card .corner {
+    bottom: 5px;
+    right: 5px;
+    border-bottom: 2px solid var(--primary-color);
+    border-right: 2px solid var(--primary-color);
+}
+
+/* 证书悬浮特效 */
+.certificate-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 15px 30px rgba(0, 240, 255, 0.25), 0 0 30px rgba(0, 240, 255, 0.15) inset;
+    border-color: var(--primary-color);
+}
+
+.certificate-icon {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 3;
+}
+
+.certificate-card:hover .certificate-icon {
+    transform: rotate(360deg) scale(1.1);
+    text-shadow: 0 0 20px rgba(0, 240, 255, 0.7);
+}
+
+.certificate-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-color);
+    position: relative;
+    z-index: 3;
+}
+
+/* 证书模态框样式 */
+.certificate-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.certificate-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.certificate-modal-content {
+    position: relative;
+    background: rgba(18, 18, 48, 0.95);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 240, 255, 0.3);
+    border-radius: 10px;
+    padding: 30px;
+    max-width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 40px rgba(0, 240, 255, 0.3);
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+
+.certificate-modal.active .certificate-modal-content {
+    transform: scale(1);
+}
+
+/* 关闭按钮 */
+.certificate-modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 1.5rem;
+    color: rgba(255, 255, 255, 0.8);
+    cursor: pointer;
+    transition: color 0.3s ease;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 1001;
+}
+
+.certificate-modal-close:hover {
+    color: var(--primary-color);
+    transform: rotate(180deg);
+}
+
+.certificate-modal-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-color);
+    margin-bottom: 20px;
+    text-align: center;
+    padding: 0 10px;
+}
+
+.certificate-modal-image {
+    width: 100%;
+    height: auto;
+    max-height: 70vh;
+    object-fit: contain;
+    border-radius: 8px;
+    border: 2px solid rgba(0, 240, 255, 0.3);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* 技能卡片 - 平行四边形样式 */
+.skill-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.skill-card {
+    background: rgba(18, 18, 48, 0.8);
+    border: 1px solid rgba(0, 240, 255, 0.2);
+    border-radius: 10px;
+    padding: 30px 35px;
+    text-align: center;
+    transition: all 0.3s ease;
+    transform: skew(-20deg);
+    position: relative;
+    overflow: hidden;
+}
+
+/* 平行四边形卡片悬浮特效 */
+.skill-card:hover {
+    transform: skew(-5deg) translateY(-8px) scale(1.02);
+    box-shadow: 0 15px 30px rgba(0, 240, 255, 0.25), 0 0 30px rgba(0, 240, 255, 0.15) inset;
+    border-color: var(--primary-color);
+    background: rgba(18, 18, 48, 0.95);
+}
+
+.skill-icon {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 2;
+}
+
+.skill-card:hover .skill-icon {
+    transform: scale(1.2);
+    text-shadow: 0 0 20px rgba(0, 240, 255, 0.7);
+}
+
+.skill-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: var(--text-color);
+    position: relative;
+    z-index: 2;
+}
+
+.skill-progress {
+    width: 100%;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    position: relative;
+    z-index: 2;
+}
+
+.skill-progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    border-radius: 4px;
+    width: 0;
+    transition: width 1.5s ease;
+    position: relative;
+    z-index: 2;
+}
+
+.skill-card p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    position: relative;
+    z-index: 2;
+}
+
+/* 平行四边形卡片背景装饰 */
+.skill-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, transparent 50%, rgba(0, 240, 255, 0.05) 50%);
+    z-index: 1;
+    transform: skew(-20deg);
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .certificate-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 20px;
+    }
+
+    .certificate-card {
+        padding: 20px 15px;
+    }
+
+    .certificate-icon {
+        font-size: 2.5rem;
+        margin-bottom: 15px;
+    }
+
+    .certificate-name {
+        font-size: 1rem;
+    }
+
+    .skill-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .skill-card:hover {
+        transform: translateY(-6px) scale(1.01);
+    }
+
+    .skill-card:hover .skill-icon {
+        transform: scale(1.15);
+    }
+
+    .skill-title {
+        font-size: 1.2rem;
+    }
+
+    /* 证书模态框响应式 */
+    .certificate-modal-content {
+        padding: 20px;
+        max-width: 95%;
+        padding-top: 20px;
+    }
+
+    .certificate-modal-title {
+        font-size: 1.3rem;
+        padding: 0 10px;
+        margin-top: 10px;
+    }
+
+    .certificate-modal-close {
+        top: 15px;
+        right: 0px;
+        width: 30px;
+        height: 30px;
+        font-size: 1rem;
+    }
+
+    .certificate-modal-close:hover {
+    color: var(--primary-color);
+    transform: rotate(0deg);
+}
+}
+
+@media (max-width: 480px) {
+    .certificate-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .certificate-card {
+        min-width: 300px;
+        margin: 0 auto;
+    }
+
+    .certificate-modal-content {
+        padding-top: 5px;
+    }
+
+    .certificate-modal-image {
+        max-height: 60vh;
+    }
+
+    .certificate-modal-title {
+        padding: 0 10px;
+        font-size: 1.2rem;
+        /* margin-top: 15px; */
+    }
+
+    .certificate-modal-close {
+        top: 12px;
+        right: 0;
+        width: 28px;
+        height: 28px;
+        font-size: 0.9rem;
+    }
+
+    .certificate-modal-close:hover {
+    color: var(--primary-color);
+    transform: rotate(180deg);
+}
+}

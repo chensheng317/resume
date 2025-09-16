@@ -1,0 +1,97 @@
+/* 个人简介样式 */
+#about {
+    background: var(--light-bg);
+}
+
+.about-content {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    margin-bottom: 50px;
+}
+
+.about-image img {
+    width: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 2px solid var(--primary-color);
+    box-shadow: var(--glow-effect);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.about-image img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(0, 240, 255, 0.7);
+}
+
+.about-text {
+    flex: 1;
+}
+
+.about-text p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    color: rgba(255, 255, 255, 0.9);
+    text-indent: 2em;
+}
+
+.info-card {
+    background: rgba(18, 18, 48, 0.8);
+    border: 1px solid rgba(0, 240, 255, 0.2);
+    border-radius: 10px;
+    padding: 30px;
+    backdrop-filter: blur(5px);
+}
+
+.info-item {
+    display: flex;
+    margin-bottom: 15px;
+    align-items: flex-start;
+}
+
+.info-label {
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-right: 15px;
+    min-width: 80px;
+}
+
+.info-value {
+    color: rgba(255, 255, 255, 0.9);
+    flex: 1;
+}
+
+/* 响应式设计 - 适配手机屏幕 */
+@media (max-width: 768px) {
+    .about-content {
+        flex-direction: column;
+        gap: 30px;
+    }
+    
+    .about-image img {
+        min-width: 200px;
+        height: auto;
+    }
+}
+
+/* 超小屏幕适配 */
+@media (max-width: 480px) {
+    .about-content {
+        gap: 20px;
+    }
+    
+    .about-image img {
+        min-width: 200px;
+        height: auto;
+    }
+    
+    .about-text p {
+        font-size: 1rem;
+    }
+    
+    .info-card {
+        padding: 20px;
+    }
+}

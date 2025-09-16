@@ -1,0 +1,213 @@
+/* 社会实践和志愿服务样式 - 文件夹风格 */
+#social-practice,
+#volunteer-service {
+    background: var(--light-bg);
+    padding-bottom: 100px;
+}
+
+.flow-chart {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    position: relative;
+    padding: 30px 0;
+}
+
+.flow-item {
+    position: relative;
+    flex: 0 0 auto;
+    width: 100%;
+    max-width: 280px;
+    transition: all 0.3s ease;
+}
+
+/* 创建曲线连接线的SVG元素 */
+.flow-connector {
+    position: absolute;
+    height: 4px;
+    background: var(--primary-color);
+    box-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+    z-index: 1;
+}
+
+/* 文件夹样式 */
+.path-content {
+    position: relative;
+    background: rgba(18, 18, 48, 0.9);
+    border: 1px solid rgba(0, 240, 255, 0.2);
+    border-radius: 0 8px 8px 8px;
+    padding: 30px 10% 20px 20%;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    overflow: hidden;
+}
+
+/* 文件夹顶部标签 */
+.path-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 10px;
+    background: linear-gradient(90deg, var(--primary-color), rgba(0, 240, 255, 0.7));
+    border-bottom: 1px solid rgba(0, 240, 255, 0.3);
+    z-index: 1;
+}
+
+/* 文件夹侧边装饰 */
+.path-content::after {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 0;
+    width: 10%;
+    height: calc(100% - 10px);
+    background: linear-gradient(90deg, rgba(0, 240, 255, 0.15), transparent);
+    border-right: 1px solid rgba(0, 240, 255, 0.1);
+    z-index: 1;
+}
+
+/* 文件夹悬浮特效 */
+.path-content:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 10px 30px rgba(0, 240, 255, 0.3), 0 0 20px rgba(0, 240, 255, 0.2) inset;
+    border-color: var(--primary-color);
+    background: rgba(18, 18, 48, 0.95);
+}
+
+/* 悬浮时的科技线条动画 */
+.path-content:hover::before {
+    background: linear-gradient(90deg, var(--primary-color), rgba(0, 240, 255, 0.9));
+    animation: folderGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes folderGlow {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    100% {
+        background-position: 100% 50%;
+    }
+}
+
+/* 悬浮时内部发光效果 */
+.path-content:hover .path-title {
+    text-shadow: 0 0 10px rgba(0, 240, 255, 0.7);
+}
+
+.path-date {
+    color: var(--primary-color);
+    font-weight: 600;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+    position: relative;
+    z-index: 2;
+}
+
+.path-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-color);
+    position: relative;
+    z-index: 2;
+    transition: all 0.3s ease;
+    line-height: 1.4;
+}
+
+/* 横向流程图响应式设计 - 适配桌面和平板 */
+@media (min-width: 768px) {
+    .flow-chart {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: nowrap;
+        position: relative;
+        padding: 0 30px;
+    }
+
+    .flow-item {
+        flex: 1;
+        margin: 0 10px;
+    }
+
+    .flow-connector {
+        position: absolute;
+        height: 4px;
+        background: none;
+    }
+
+    .flow-connector svg {
+        width: 100%;
+        height: 100%;
+    }
+
+    .flow-connector path {
+        fill: none;
+        stroke: var(--primary-color);
+        stroke-width: 4;
+        stroke-linecap: round;
+        filter: drop-shadow(0 0 10px rgba(0, 240, 255, 0.5));
+    }
+}
+
+/* 手机版响应式设计优化 */
+@media (max-width: 768px) {
+
+    #social-practice,
+    #volunteer-service {
+        padding-bottom: 60px;
+    }
+
+    .flow-chart {
+        padding: 20px 15px;
+        gap: 25px;
+    }
+
+    .flow-item {
+        max-width: 100%;
+        margin: 0 auto;
+    }
+
+    .path-content {
+        padding: 25px 10% 15px 20%;
+        border-radius: 0 6px 6px 6px;
+    }
+
+    .path-content::before {
+        height: 8px;
+    }
+
+    .path-content::after {
+        top: 8px;
+        width: 10%;
+        height: calc(100% - 8px);
+    }
+
+    .path-date {
+        font-size: 0.8rem;
+        margin-bottom: 8px;
+    }
+
+    .path-title {
+        font-size: 1rem;
+    }
+
+    .path-content:hover {
+        transform: translateY(-6px) scale(1.01);
+        box-shadow: 0 8px 20px rgba(0, 240, 255, 0.25), 0 0 15px rgba(0, 240, 255, 0.15) inset;
+    }
+}
+
+/* 超小屏幕优化 */
+@media (max-width: 375px) {
+    .path-content {
+        padding: 20px 10% 12px 20%;
+    }
+
+    .path-title {
+        font-size: 0.95rem;
+    }
+}

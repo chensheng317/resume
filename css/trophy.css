@@ -1,0 +1,181 @@
+/* 荣誉成果样式 - 奖杯样式 */
+#achievements {
+    background: var(--dark-bg);
+}
+
+.trophy-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.trophy-card {
+    background: rgba(18, 18, 48, 0.8);
+    border: 1px solid rgba(0, 240, 255, 0.2);
+    border-radius: 10px;
+    padding: 30px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.trophy-card::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 120px;
+    background: linear-gradient(135deg, rgba(0, 240, 255, 0.2), rgba(0, 240, 255, 0));
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.trophy-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--glow-effect);
+    border-color: var(--primary-color);
+}
+
+.trophy-icon {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 2;
+    transition: all 0.3s ease;
+}
+
+.trophy-card:hover .trophy-icon {
+    transform: scale(1.2);
+    color: #ffd700;
+}
+
+.trophy-date {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.trophy-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--text-color);
+    position: relative;
+    z-index: 2;
+}
+
+.trophy-issuer {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+    position: relative;
+    z-index: 2;
+}
+
+/* 弹窗样式 */
+.trophy-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.trophy-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.trophy-modal-content {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    padding: 30px;
+    max-width: 800px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.trophy-modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 1.5rem;
+    color: rgba(255, 255, 255, 0.8);
+    cursor: pointer;
+    transition: color 0.3s ease;
+    z-index: 10;
+}
+
+.trophy-modal-close:hover {
+    color: var(--primary-color);
+    transform: rotate(180deg);
+}
+
+.trophy-modal-header {
+    margin-bottom: 20px;
+}
+
+.trophy-modal-title {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    font-weight: 600;
+    text-align: center;
+}
+
+.trophy-modal-body {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+}
+
+.trophy-modal-image {
+    width: 300px;
+    flex-shrink: 0;
+}
+
+.trophy-modal-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    border: 2px solid var(--primary-color);
+    box-shadow: var(--glow-effect);
+}
+
+.trophy-modal-description {
+    flex: 1;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.8;
+    font-size: 1.1rem;
+}
+
+@media (max-width: 768px) {
+    .trophy-modal-body {
+        flex-direction: column;
+    }
+    
+    .trophy-modal-image {
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+}

@@ -1,0 +1,193 @@
+/* 数字显示屏样式 */
+.counter-display-section {
+    padding: 120px 0;
+    background: linear-gradient(135deg, var(--dark-bg), var(--light-bg));
+    position: relative;
+    overflow: hidden;
+}
+
+.counter-display-container {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+}
+
+.counter-display {
+    background: rgba(10, 10, 31, 0.8);
+    border: 2px solid var(--primary-color);
+    border-radius: 20px;
+    padding: 50px;
+    box-shadow: var(--brand-glow), 0 0 30px rgba(0, 240, 255, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+/* 数字显示屏内部装饰 */
+.counter-display::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, transparent 60%, rgba(0, 240, 255, 0.1) 100%);
+    animation: rotate 20s linear infinite;
+    z-index: 0;
+}
+
+@keyframes rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* 显示标题 */
+.counter-title {
+    text-align: center;
+    font-size: 1.8rem;
+    color: var(--text-color);
+    margin-bottom: 30px;
+    text-shadow: 0 0 10px var(--primary-color);
+    position: relative;
+    z-index: 1;
+}
+
+/* 数字显示区域 */
+.counter-digits {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    z-index: 1;
+}
+
+.counter-digit {
+    width: 80px;
+    height: 120px;
+    background: linear-gradient(180deg, #111, #222);
+    border: 2px solid var(--primary-color);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 4rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    text-shadow: 0 0 10px var(--primary-color), 0 0 20px var(--primary-color);
+    position: relative;
+    overflow: hidden;
+    box-shadow: inset 0 0 20px rgba(0, 240, 255, 0.3);
+}
+
+/* 数字格子内部线条 */
+.counter-digit::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent 45%, rgba(0, 240, 255, 0.1) 50%, transparent 55%);
+    animation: scanline 2s linear infinite;
+}
+
+@keyframes scanline {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(100%); }
+}
+
+/* 小数点样式 */
+.counter-decimal {
+    width: 20px;
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.decimal-point {
+    width: 15px;
+    height: 15px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--primary-color), 0 0 20px var(--primary-color);
+}
+
+/* 单位显示 */
+.counter-unit {
+    margin-top: 30px;
+    text-align: center;
+    font-size: 1.5rem;
+    color: var(--text-color);
+    text-shadow: 0 0 10px var(--primary-color);
+    font-weight: 500;
+    position: relative;
+    z-index: 1;
+}
+
+/* 动画完成后的最终发光效果 */
+.counter-digit.final-glow {
+    animation: finalGlow 1s ease-out forwards;
+}
+
+@keyframes finalGlow {
+    0% {
+        box-shadow: inset 0 0 20px rgba(0, 240, 255, 0.3);
+        text-shadow: 0 0 10px var(--primary-color), 0 0 20px var(--primary-color);
+    }
+    50% {
+        box-shadow: inset 0 0 30px rgba(0, 240, 255, 0.6), 0 0 40px rgba(0, 240, 255, 0.4);
+        text-shadow: 0 0 20px var(--primary-color), 0 0 40px var(--primary-color), 0 0 60px var(--primary-color);
+    }
+    100% {
+        box-shadow: inset 0 0 20px rgba(0, 240, 255, 0.3), 0 0 20px rgba(0, 240, 255, 0.2);
+        text-shadow: 0 0 15px var(--primary-color), 0 0 30px var(--primary-color);
+    }
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .counter-digit {
+        width: 60px;
+        height: 90px;
+        font-size: 3rem;
+    }
+    
+    .counter-title {
+        font-size: 1.5rem;
+    }
+    
+    .counter-unit {
+        font-size: 1.2rem;
+    }
+    
+    .counter-display {
+        padding: 30px 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    .counter-digit {
+        width: 45px;
+        height: 70px;
+        font-size: 2.2rem;
+    }
+    
+    .counter-decimal {
+        width: 15px;
+        height: 70px;
+        gap: 15px;
+    }
+    
+    .decimal-point {
+        width: 10px;
+        height: 10px;
+    }
+}

@@ -1,0 +1,85 @@
+/* 音频播放器样式 */
+.audio-player {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: var(--dark-bg);
+  border: 2px solid var(--primary-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1000;
+  box-shadow: var(--glow-effect);
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.audio-player::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, var(--primary-color) 0%, transparent 70%);
+  opacity: 0.2;
+  animation: rotate 20s linear infinite;
+}
+
+.audio-player::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--primary-color);
+  box-shadow: 0 0 10px var(--primary-color);
+}
+
+.audio-player i {
+  position: relative;
+  font-size: 1.5rem;
+  color: var(--text-color);
+  z-index: 1;
+  margin-left: 3px;
+}
+
+.audio-player:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 15px var(--primary-color), 0 0 30px var(--primary-color);
+}
+
+.audio-player.playing {
+  animation: rotate 5s linear infinite;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* 响应式调整 */
+@media (max-width: 576px) {
+  .audio-player {
+    width: 60px;
+    height: 60px;
+    bottom: 20px;
+    right: 20px;
+  }
+
+  .audio-player i {
+    font-size: 1.2rem;
+  }
+
+  .audio-player::after {
+    width: 15px;
+    height: 15px;
+  }
+}
